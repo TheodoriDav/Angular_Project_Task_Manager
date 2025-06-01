@@ -1,0 +1,42 @@
+h1{
+    text-align: center;
+    font-size: 2rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#sumbitButton{
+    margin-top: 20px;
+    
+    height: 50px;
+    font-size: 1.5rem;
+    background-color: #9257de; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+#sumbitButton:hover{
+    background-color: #6d2dc1;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#sumbitButton:active{
+    background-color: #390b96;
+    transform: scale(0.95);
+}
+#checkbox{
+    margin-left: 30px;
+    width: 15px;
+    height: 15px;
+}
+body{
+    background-color: beige;
+    background-image: url('/todo/cozyPic.png');
+    background-size: cover;
+    background-position: center;
+
+}
+
+#deletebtn{
+    border-radius: 20%;
+    
+    
+}
