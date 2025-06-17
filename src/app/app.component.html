@@ -6,9 +6,9 @@
 <div class="container">
   <h1>Task Manager </h1>
   <hr>
-<form (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm">
+<form id="submitForm" (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm">
   <div class="form-group">
-    <label for="TaskToDo">Task</label>
+    
     <input type="text" class="form-control" id="task"  placeholder="Write your daily task" ngModel="task" name="task" required=" ">
     <!-- gia na vgainei to error otan einai adeio to input  -->
     <small *ngIf ="taskForm.invalid && taskForm.dirty"id="errorMessage" class="form-text text-danger">Required field.</small>
@@ -26,14 +26,27 @@
       
       <th scope="col">Task</th>
       <th scope="col">Completed</th>
+      <th scope="col">Prio</th>
       <th scope="col">Delete</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Save</th>
+      
+      
+
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let task of taskArray; index as taskIndex">
-      <td>{{task.taskName}}</td>
+      <td>
+    <input #taskinput type="text" class="form-control" id="taskInTable"  value="{{task.taskName}}" [disabled]="!task.isEdible">
+        
+      </td>
+      <td><input (change)="onCheck()" id ="checkboxPrio"type="checkbox"></td>
       <td><input (change)="onCheck()" id ="checkbox"type="checkbox"></td>
-      <td><button id="deletebtn"class="btn btn-danger btn-sm" (click)="onDelete(taskIndex)">X</button></td>
+      <td><button id="deletebtn"class="btn btn-danger btn-sm" (click)="onDelete(taskIndex)">Delete</button></td>
+      <td><button id="deletebtn"class="btn btn-warning btn-sm" (click)="onEdit(taskIndex)" [disabled]="task.isEdible">Edit</button></td>
+      <td><button id="deletebtn"class="btn btn-success btn-sm" (click)="onSave(taskIndex, taskinput.value)" [disabled]="!task.isEdible">Save</button></td>
+
     </tr>
     
   </tbody>
@@ -43,4 +56,3 @@
 </div>
 
 
-!

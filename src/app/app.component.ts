@@ -13,14 +13,15 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   title = 'todo';
 
-  taskArray=[{taskName: 'A task will be added down below (example)', isCompleted: false},]
+  taskArray=[{taskName: ' ', isCompleted: false,isEdible:false} ]
 
 //gia na addarw ta task 
   onSubmit(form: NgForm){
   console.log(form);
   this.taskArray.push({
     taskName: form.controls['task'].value,
-    isCompleted: false
+    isCompleted: false,
+    isEdible: false
   });
   form.resetForm();
 }
@@ -36,5 +37,14 @@ onCheck(){
   console.log(this.taskArray)
 }
 
-
+onEdit(index: number){
+  //gia na allazei to isEdible se true
+  this.taskArray[index].isEdible = true;
+  console.log(this.taskArray[index].isEdible);
+}
+onSave(index: number,newtask: string){
+  //gia na apothikeush to kainourgio task apo to array
+  this.taskArray[index].taskName = newtask;
+  this.taskArray[index].isEdible = false;
+}
 }
